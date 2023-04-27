@@ -1,0 +1,77 @@
+% \documentclass[../AN.tex]{subfiles}
+
+% \begin{document}
+
+\section{Lepton Selection}\label{sec:lepton-selection}
+
+For selecting leptons, we have 3 sets of cuts to define three working points used in this analysis: Loose, Fake, Tight:
+\begin{itemize}
+  \item The Loose working point is very loose and used to veto events with extra leptons or to even define control regions (\eg the ttZ control region is defined as having 2 Loose leptons within the Z-mass window).
+  \item The Fake working point is lepton pass many tighter cuts but not passing a cut on the TTH mva. The TTH mva was designed by the TTH group to help discriminate prompt leptons from nonprompt leptons. Similar to their analysis, Fake leptons are used for defining nonprompt leptons that are used in the Fake Rate method for the Nonprompt background
+  \item The Tight working point is the lepton passing the tight cuts as well as the TTH mva cut. This is the level of lepton primarily used.
+\end{itemize}
+
+Each of these working points is defined such that each tighter working point is based off of the the looser working points cuts. This ensures that each tight lepton is also a Fake and a Loose.
+
+For this analysis, leptons are only considered to be the light leptons, electrons and muons. While the cuts between the leptons are different, a common variable used is the Isolation variable. This helps remove some of the nonprompt leptons. For this analysis, we used the mini-Isolation variable, which uses a cone that changes size depending on the $\pt$ of the lepton to reduce spurious jet contamination of boosted objects. Mini-Isolation is defined as:
+
+\begin{equation}\label{eq:isolation}
+  I_{mini}=\frac{\pt(h^{\pm})-\max\bigl\{0,\pt(h^{0})+\pt(\gamma)-\rho\mathcal{A}\times{(R/0.3)}^{2}\bigr\}}{\pt(\ell)}
+\end{equation}
+
+\subsection{Muon}\label{sec:muon}
+
+For baseline loose selection, Muons must have $|\eta| < 2.4$, $\pt > 5\gev$, pass vertex related cuts ($d_{z}$, $d_{xy}$, and $\sigma_{IP}$ within recommended thresholds), and it must pass the Loose requirement as prescribed by the Muon POG, \ie is a Global or Tracker Muon and is a Particle Flow candidate. For our Fake working point, the muon must pass $\pt > 12\gev$ (To pass our trigger requirement), the POG medium ID and the tightCharge requirement to reduce miss-measurements of charge. For this analysis, we consider the background caused by miss-measurements of the leptons charge, but with the tight charge, the fake rate is $<10^{-7}$ (\ie not measured in monte carlo). For the Tight requirement, the lepton must in addition pass the TTH mva cut of 0.4 and have a $\pt > 15\gev$.
+
+\subsection{Electron}\label{sec:electron}
+
+For baseline loose selection, Electrons must have $|\eta| < 2.5$, $\pt > 7\gev$, pass vertex related cuts ($d_{z}$, $d_{xy}$, and $\sigma_{IP}$ within recommended thresholds), must pass the conversion veto, have $\le 1$ lost hit and pass the MVA loose cut. For the IDs, the EGamma POG has developed an MVA that has 3 working points, MVA loose, MVA90, and MVA80 (MVA90 meaning 90\% efficiency). For the Fake working point, the MVA90 ID is required, the $\pt > 15\gev$, it must have 0 lost hits, and pass the tight charge requirement. Because of the stocastic nature of electron decay, the charge miss-measurement rate is non-insignficant, even after applying the tight charge cut. This process is described in (....). For the Tight requirement, the lepton must in addition pass the TTH mva cut of 0.4 and have a $\pt > 15\gev$.
+
+\subsection{Summary}\label{sec:lepsummary}
+As a summary of all of the cuts, the following table shows all of the cuts used:
+
+\begin{table}
+  \centering
+  \caption{Lepton working point cuts}\label{tab:lepton_selection}
+  \textdagger{} --- $\pt$ correction are applied to fake leptons with the first value being the cut on the measured $\pt$ of the lepton and the second being the cut no the corrected $\pt$
+  \begin{tabular}{ c c c c c c c }
+    \hline
+    \multirow{2}{*}{Variable} & \multicolumn{3}{c}{Electons}                       & \multicolumn{3}{c}{Muons}        \\
+                              & Loose                        & Fake     & Tight    & Loose    & Fake      & Tight     \\
+    \hline
+    $p_{T}$                   & 5                            & $15/15^{\dagger}$ & 15       & 5        & $12/15^{\dagger}$  & 15        \\
+    $\eta$                       & 2.5                          & 2.5      & 2.5      & 2.4      & 2.4       & 2.4       \\
+    Id                        & MVA Loose                    & MVA WP90 & MVA WP90 & Loose Id & Medium Id & Medium Id \\
+    miniIso                   & 0.4                          & 0.4      & 0.4      & 0.4      & 0.4       & 0.4       \\
+    $d_{xy}$                  & 0.05                         & 0.05     & 0.05     & 0.05     & 0.05      & 0.05      \\
+    $d_{z}$                   & 0.1                          & 0.1      & 0.1      & 0.1      & 0.1       & 0.1       \\
+    $\sigma_{IP}$                  & ---                            & 4        & 4        & ---        & 4         & 4         \\
+    TTH mva                   & ---                            & ---        & 0.4      & ---        & ---         & 0.4       \\
+    $p_{T}(\ell)/p_{T}(j)$       & ---                            & 0.4      & ---        & ---        & 0.4       & ---         \\
+    Tight Charge              & ---                            & $\checkmark$      & $\checkmark$      & ---        & $\checkmark$       & $\checkmark$       \\
+    Conv Veto                 & $\checkmark$                          & $\checkmark$      & $\checkmark$      &                                  \\
+    Lost Hits                 & 1                            & 0        & 0        &                                  \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\section{Jet Selection}\label{sec:jet-selection}
+For Jets, AK4 CHS jets are used. For this analysis, we expect to have many Bjets and high $\pt$ jets, so our selection is made to reflect this, so we have a Bjet requirement and a tight Jet requirement. The baseline select for both of these are $\pt > 25 GeV$, $|\eta|<2.4$, pass the Medium Pileup ID requirement (only applied to jets with $\pt < 50\gev$), and pass the loose Jet Id (tight for 2017 because loose ID doesn't exist in that year). Further, a jet lepton cross cleaning process is done: for all Fake level leptons, the closest jet to the lepton is associated with it and if jet is within $\DR < 0.4$ of the lepton, it is removed from the event.
+
+\subsection{Tight Jet Selection}\label{sec:bjet-selection}
+For the tight jets, they are the baseline jets but with $\pt > 40\gev$.
+
+
+\subsection{BJet Selection}\label{sec:bjet-selection}
+For Bjets, an additional cut on the btagging value is done. For this analysis, we use the DeepJet btagging, or DeepFlavB. For our signal region, we only consider jets to be BJets if they pass the Medium WP for the btagging, but the number of loose and tight WP bjets is noted for every event for use in the DNN training.
+
+
+
+
+% \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-output-dir: "build"
+%%% TeX-master: "../AN"
+%%% End:

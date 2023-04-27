@@ -1,0 +1,53 @@
+% \documentclass[../AN.tex]{subfiles}
+
+% \begin{document}
+\section{Triggers}
+
+For the whole analysis, a dilepton trigger is used. These are chosen to be unprescaled triggers that cover the three different channels considered in this analysis: $ee$, $e\mu$, and $\mu\mu$.
+
+For the nonprompt fake rate method, the
+
+\begin{table}
+  \centering
+  \begin{tabular}{c c l }
+    \hline
+    Year                         & Channel               & Trigger Name                                              \\
+    \hline
+    \multirow{4}{*}{2016preVFP}  & $\mu\mu$                  & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ                  \\
+                                 & \multirow{2}{*}{$e\mu$} & HLT\_Mu23\_TrkIsoVVL\_Ele8\_CaloIdL\_TrackIdL\_IsoVL      \\
+                                 &                       & HLT\_Mu8\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL      \\
+                                 & $ee$                  & HLT\_Ele23\_Ele12\_CaloIdL\_TrackIdL\_IsoVL\_DZ           \\
+    \hline
+    \multirow{4}{*}{2016postVFP} & $\mu\mu$                  & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ                  \\
+                                 & \multirow{2}{*}{$e\mu$} & HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL\_DZ \\
+                                 &                       & HLT\_Mu12\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL\_DZ \\
+                                 & $ee$                  & HLT\_Ele23\_Ele12\_CaloIdL\_TrackIdL\_IsoVL\_DZ           \\
+    \hline
+    \multirow{4}{*}{2017}        & $\mu\mu$                  & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass8           \\
+                                 & \multirow{2}{*}{$e\mu$} & HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL\_DZ \\
+                                 &                       & HLT\_Mu8\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL\_DZ  \\
+                                 & $ee$                  & HLT\_Ele23\_Ele12\_CaloIdL\_TrackIdL\_IsoVL               \\
+    \hline
+    \multirow{4}{*}{2018}        & $\mu\mu$                  & HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8         \\
+                                 & \multirow{2}{*}{$e\mu$} & HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL\_DZ \\
+                                 &                       & HLT\_Mu8\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL\_DZ  \\
+                                 & $ee$                  & HLT\_Ele23\_Ele12\_CaloIdL\_TrackIdL\_IsoVL               \\
+    \hline
+    \multirow{4}{*}{\shortstack{all years\\for Nonprompt\\Fake Rate}}
+                                 & \multirow{2}{*}{$\mu$}  & HLT\_Mu8\_TrkIsoVVL                                       \\                                 &                       & HLT\_Mu17\_TrkIsoVVL                                      \\
+                                 & \multirow{2}{*}{$e$}  & HLT\_Ele12\_CaloIdL\_TrackIdL\_IsoVL\_PFJet30              \\
+                                 &                       & HLT\_Ele23\_CaloIdL\_TrackIdL\_IsoVL\_PFJet30             \\
+    \hline
+  \end{tabular}
+  \caption{Triggers used for all regions}\label{tab:triggers}
+\end{table}
+
+
+
+% \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-output-dir: "build"
+%%% TeX-master: "../AN"
+%%% End:

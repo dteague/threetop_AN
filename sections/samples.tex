@@ -1,0 +1,226 @@
+% \documentclass[../AN.tex]{subfiles}
+
+% \begin{document}
+
+\section{Samples and Triggers}
+
+\subsection{Collision Data}
+This analysis uses full RunII data for pp collisions from the LHC.\@ During the RunII data taking period from 2016 to 2018, CMS collected 35.9\fbinv for 2016, 41.5\fbinv for 2017, and $59.6\fbinv$ for 2018 meaning a total amount of data collected for RunII to be 137.0\fbinv. The datasets that were used in this analysis were double-lepton datasets. For calculating the nonprompt fake-rate \todo{reference section}, heavily prescale single-lepton triggers were used which are included the double-lepton sets except for electrons in 2017 which has a dedicated single-lepton dataset:
+
+\begin{itemize}
+  \item DoubleMuon: $\mu\mu$ dataset. Also used for single muon triggers
+  \item MuonEG:\@ $e\mu$ dataset
+  \item DoubleEG/DoubleEG/EGamma: $ee$ dataset for 2016, 2017, and 2018 respectively
+  \item DoubleEG/SingleElectron/EGamma: $e$ dataset for 2016, 2017, and 2018 respectively. This is used only for the nonprompt fake rate
+\end{itemize}
+
+The data events noted to be good for analysis use were filtered by the golden JSON files listed in table~\ref{tab:golden_json}. Further, events were further cleaned using a set of MET filters; these filters, as used in NanoAOD are:
+
+\begin{itemize}
+  \item \texttt{Flag\_goodVertices}
+  \item \texttt{Flag\_globalSuperTightHalo2016Filter}
+  \item \texttt{Flag\_HBHENoiseFilter}
+  \item \texttt{Flag\_HBHENoiseIsoFilter}
+  \item \texttt{Flag\_EcalDeadCellTriggerPrimitiveFilter}
+  \item \texttt{Flag\_BadPFMuonFilter}
+  \item \texttt{Flag\_ecalBadCalibFilter}
+\end{itemize}
+
+The data events were reconstructed in the ReReco campaign for Summer20. The specifics of the global tag are discussed shown in~\ref{tab:sample_conditions}.
+
+\begin{table}\centering
+  \caption{Conditions for the Data and MC samples for all years}\label{tab:sample_conditions}
+  \begin{tabular}{ c c l }
+    \hline
+                          & Year        & Global Tag/Condition                               \\
+    \hline
+    \multirow{4}{*}{MC}   & 2016preVFP  & 106X\_mcRun2\_asymptotic\_preVFP\_v11              \\
+                          & 2016postVFP & 106X\_mcRun2\_asymptotic\_v17                      \\
+                          & 2017        & 106X\_mc2017\_realistic\_v9                        \\
+                          & 2018        & 106X\_upgrade2018\_realistic\_v16\_L1v1            \\
+    \hline
+    \multirow{4}{*}{Data} & 2016preVFP  & Run2016[B-F]-HIMP\_UL2016\_MiniAODv2\_NanoAODv9-v* \\
+                          & 2016postVFP & Run2016[F-H]-UL2016\_MiniAODv2\_NanoAODv9-v*       \\
+                          & 2017        & Run2017[B-F]-UL2017\_MiniAODv2\_NanoAODv9-v*       \\
+                          & 2018        & Run2018[A-D]-UL2018\_MiniAODv2\_NanoAODv9-v*       \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+  \centering
+  \caption{Certified luminosity mask JSON files for each data-taking era.}\label{tab:golden_json}
+  \begin{tabular}{ l c }
+    \hline
+    Era             & JSON File                                                                                                                                                                                                                   \\
+    \hline
+    2016pre/postVFP & \href{https://cms-service-dqmdc.web.cern.ch/CAF/certification/Collisions16/13TeV/Legacy_2016/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt}{Cert\_271036-284044\_13TeV\_Legacy2016\_Collisions16\_JSON.txt}     \\
+    2017            & \href{https://cms-service-dqmdc.web.cern.ch/CAF/certification/Collisions17/13TeV/Legacy_2017/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt}{Cert\_294927-306462\_13TeV\_UL2017\_Collisions17\_GoldenJSON.txt} \\
+    2018            & \href{https://cms-service-dqmdc.web.cern.ch/CAF/certification/Collisions18/13TeV/Legacy_2018/Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt}{Cert\_314472-325175\_13TeV\_Legacy2018\_Collisions18\_JSON.txt}     \\
+    \hline
+  \end{tabular}
+\end{table}
+
+
+\subsection{Monte Carlos Samples}
+For this analysis, the new ReReco of the Legacy samples was use called UltraLegacy. The campaigns for the NanoAOD files used  was \texttt{RunIISummer20UL} using \texttt{NanoAODv9}. The conditions for the samples are listed in~\ref{tab:sample_conditions}. For this, the same Tune was used every year (\texttt{TuneCP5}).
+
+Monte Carlo samples used are grouped based on there use for different phase-spaces considered in this analysis, namely for the signal region (\ref{tab:signal_xsec}), the nonprompt fake rate regions (\ref{tab:nonprompt_measurement_xsec} and~\ref{tab:nonprompt_closure_xsec}), and the charge misId regions (\ref{tab:chargeMis_xsec}). The signal region is discussed more thoroughly in the \todo{analysis section} while the nonprompt fake rate and charge misId is discussed in the \todo{fake rate section}.
+
+\todo{update xsecs}
+
+\begin{table}
+  \centering
+  \caption{List of Monte Carlo Samples used for signal region and their cross-sections}\label{tab:signal_xsec}
+  \begin{tabular}{ c l r }
+    \hline
+    Sample Group           & DAS Name                                                  & cross-section (pb) \\
+    \hline
+    \multirow{2}{*}{TTT}   & TTTJ\_TuneCP5\_13TeV-madgraph-pythia8                     & 0.0004741          \\
+                           & TTTW\_TuneCP5\_13TeV-madgraph-pythia8                     & 0.000788           \\
+    \hline
+    \multirow{1}{*}{TTT}   & TTTT\_TuneCP5\_13TeV-amcatnlo-pythia8                     & 0.001197           \\
+    \hline
+    \multirow{5}{*}{TT+X}  & TTWJetsToLNu\_TuneCP5\_13TeV-amcatnloFXFX-madspin-pythia8 & 0.1792             \\
+                           & TTZToLLNuNu\_M-10\_TuneCP5\_13TeV-amcatnlo-pythia8        & 0.2589             \\
+                           & TTZToLL\_M-1to10\_TuneCP5\_13TeV-amcatnlo-pythia8         & 0.0532             \\
+                           & ttHToNonbb\_M125\_TuneCP5\_13TeV-powheg-pythia8           & 0.2151             \\
+                           & ttHTobb\_M125\_TuneCP5\_13TeV-powheg-pythia8              & 0.2934             \\
+    \hline
+    \multirow{6}{*}{TT+XY} & TTWH\_TuneCP5\_13TeV-madgraph-pythia8                     & 0.001582           \\
+                           & TTHH\_TuneCP5\_13TeV-madgraph-pythia8                     & 0.000757           \\
+                           & TTWW\_TuneCP5\_13TeV-madgraph-pythia8                     & 0.01150            \\
+                           & TTWZ\_TuneCP5\_13TeV-madgraph-pythia8                     & 0.003884           \\
+                           & TTZH\_TuneCP5\_13TeV-madgraph-pythia8                     & 0.001535           \\
+                           & TTZZ\_TuneCP5\_13TeV-madgraph-pythia8                     & 0.001982           \\
+    \hline
+    \multirow{6}{*}{X+$\gamma$} & TGJets\_TuneCP5\_13TeV-amcatnlo-madspin-pythia8           & 2.967              \\
+                           & TTGamma\_Dilept\_TuneCP5\_13TeV-madgraph-pythia8          & 1.502              \\
+                           & TTGamma\_Hadronic\_TuneCP5\_13TeV-madgraph-pythia8        & 4.178              \\
+                           & TTGamma\_SingleLept\_TuneCP5\_13TeV-madgraph-pythia8      & 5.095              \\
+                           & WGToLNuG\_TuneCP5\_13TeV-madgraphMLM-pythia8              & 405.271            \\
+                           & ZGToLLG\_01J\_5f\_TuneCP5\_13TeV-amcatnloFXFX-pythia8     & 0.166              \\
+    \hline
+    \multirow{3}{*}{VV}    & WW\_TuneCP5\_13TeV-pythia8                                & 118.7              \\
+                           & WZ\_TuneCP5\_13TeV-pythia8                                & 51.11              \\
+                           & ZZ\_TuneCP5\_13TeV-pythia8                                & 16.91              \\
+    \hline
+    \multirow{6}{*}{VVV}   & WWW\_4F\_TuneCP5\_13TeV-amcatnlo-pythia8                  & 0.2109             \\
+                           & WWZ\_4F\_TuneCP5\_13TeV-amcatnlo-pythia8                  & 0.1679             \\
+                           & WZZ\_TuneCP5\_13TeV-amcatnlo-pythia8                      & 0.05550            \\
+                           & ZZZ\_TuneCP5\_13TeV-amcatnlo-pythia8                      & 0.01417            \\
+                           & WWG\_TuneCP5\_13TeV-amcatnlo-pythia8                      & 0.2147             \\
+                           & WZG\_TuneCP5\_13TeV-amcatnlo-pythia8                      & 0.04123            \\
+    \hline
+    \multirow{4}{*}{Other} & DYJetsToLL\_M-10to50\_TuneCP5\_13TeV-madgraphMLM-pythia8  & 18610.0            \\
+                           & DYJetsToLL\_M-50\_TuneCP5\_13TeV-amcatnloFXFX-pythia8     & 6077.22            \\
+                           & TT\_TuneCH3\_13TeV-powheg-herwig7                         & 831.762            \\
+                           & WJetsToLNu\_TuneCP5\_13TeV-amcatnloFXFX-pythia8           & 61526.7            \\
+    \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{table}
+  \centering
+  \caption{List of Monte Carlo Samples used for nonprompt measurement region and their cross-sections}\label{tab:nonprompt_measurement_xsec}
+  \begin{tabular}{ c l r }
+    \hline
+    Sample Group         & DAS Name                                                 & cross-section (pb) \\
+    \hline
+    \multirow{4}{*}{EWK} & DYJetsToLL\_M-10to50\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 18610.0            \\
+                         & DYJetsToLL\_M-50\_TuneCP5\_13TeV-amcatnloFXFX-pythia8    & 6077.22            \\
+                         & TT\_TuneCH3\_13TeV-powheg-herwig7                        & 831.762            \\
+                         & WJetsToLNu\_TuneCP5\_13TeV-amcatnloFXFX-pythia8          & 61526.7            \\
+    \hline
+    \multirow{13}{*}{\shortstack{QCD\\Mu enriched}}
+                         & QCD\_Pt-20\_MuEnrichedPt15\_TuneCP5\_13TeV-pythia8       & 239000             \\
+                         & QCD\_Pt-15To20\_MuEnrichedPt5\_TuneCP5\_13TeV-pythia8    & 2797000            \\
+                         & QCD\_Pt-20To30\_MuEnrichedPt5\_TuneCP5\_13TeV-pythia8    & 2518000            \\
+                         & QCD\_Pt-30To50\_MuEnrichedPt5\_TuneCP5\_13TeV-pythia8    & 1361000            \\
+                         & QCD\_Pt-50To80\_MuEnrichedPt5\_TuneCP5\_13TeV-pythia8    & 377800             \\
+                         & QCD\_Pt-80To120\_MuEnrichedPt5\_TuneCP5\_13TeV-pythia8   & 88620              \\
+                         & QCD\_Pt-120To170\_MuEnrichedPt5\_TuneCP5\_13TeV-pythia8  & 21070              \\
+                         & QCD\_Pt-170To300\_MuEnrichedPt5\_TuneCP5\_13TeV-pythia8  & 7019               \\
+                         & QCD\_Pt-300To470\_MuEnrichedPt5\_TuneCP5\_13TeV-pythia8  & 622.4              \\
+                         & QCD\_Pt-470To600\_MuEnrichedPt5\_TuneCP5\_13TeV-pythia8  & 58.86              \\
+                         & QCD\_Pt-600To800\_MuEnrichedPt5\_TuneCP5\_13TeV-pythia8  & 18.22              \\
+                         & QCD\_Pt-800To1000\_MuEnrichedPt5\_TuneCP5\_13TeV-pythia8 & 3.25               \\
+                         & QCD\_Pt-1000\_MuEnrichedPt5\_TuneCP5\_13TeV-pythia8      & 1.078              \\
+    \hline
+    \multirow{8}{*}{\shortstack{QCD\\EM enriched}}
+                         & QCD\_Pt-15to20\_EMEnriched\_TuneCP5\_13TeV-pythia8       & 1324000            \\
+                         & QCD\_Pt-20to30\_EMEnriched\_TuneCP5\_13TeV-pythia8       & 4896000            \\
+                         & QCD\_Pt-30to50\_EMEnriched\_TuneCP5\_13TeV-pythia8       & 6447000            \\
+                         & QCD\_Pt-50to80\_EMEnriched\_TuneCP5\_13TeV-pythia8       & 1988000            \\
+                         & QCD\_Pt-80to120\_EMEnriched\_TuneCP5\_13TeV-pythia8      & 367500             \\
+                         & QCD\_Pt-120to170\_EMEnriched\_TuneCP5\_13TeV-pythia8     & 66590              \\
+                         & QCD\_Pt-170to300\_EMEnriched\_TuneCP5\_13TeV-pythia8     & 16620              \\
+                         & QCD\_Pt-300toInf\_EMEnriched\_TuneCP5\_13TeV-pythia8     & 1104               \\
+    \hline
+    \multirow{5}{*}{\shortstack{QCD\\b/c->e enriched}}
+                         & QCD\_Pt\_20to30\_bcToE\_TuneCP5\_13TeV\_pythia8          & 303800             \\
+                         & QCD\_Pt\_30to80\_bcToE\_TuneCP5\_13TeV\_pythia8          & 362300             \\
+                         & QCD\_Pt\_80to170\_bcToE\_TuneCP5\_13TeV\_pythia8         & 33700              \\
+                         & QCD\_Pt\_170to250\_bcToE\_TuneCP5\_13TeV\_pythia8        & 2125.0             \\
+                         & QCD\_Pt\_250toInf\_bcToE\_TuneCP5\_13TeV\_pythia8        & 562.5              \\
+    \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{table}
+  \centering
+  \caption{List of Monte Carlo Samples used for nonprompt closure region and their cross-sections}\label{tab:nonprompt_closure_xsec}
+  \begin{tabular}{ c l r }
+    \hline
+    Sample Group & DAS Name                                                      & cross-section (pb) \\
+    \hline
+    \multirow{3}{*}{\shortstack{TTbar\\lepton-binned}}
+                 & TTTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8                      & 88.29              \\
+                 & TTToSemiLeptonic\_TuneCP5\_13TeV-powheg-pythia8               & 365.34             \\
+                 & TTToHadronic\_TuneCP5\_13TeV-powheg-pythia8                   & 377.96             \\
+    \hline
+    \multirow{8}{*}{\shortstack{W+Jets\\HT binned}}
+                 & WJetsToLNu\_HT-70To100\_TuneCP5\_13TeV-madgraphMLM-pythia8    & $1292 \times 1.21$      \\
+                 & WJetsToLNu\_HT-100To200\_TuneCP5\_13TeV-madgraphMLM-pythia8   & $1345 \times 1.21$      \\
+                 & WJetsToLNu\_HT-200To400\_TuneCP5\_13TeV-madgraphMLM-pythia8   & $359.7 \times 1.21$     \\
+                 & WJetsToLNu\_HT-400To600\_TuneCP5\_13TeV-madgraphMLM-pythia8   & $48.91 \times 1.21$     \\
+                 & WJetsToLNu\_HT-600To800\_TuneCP5\_13TeV-madgraphMLM-pythia8   & $12.05 \times 1.21$     \\
+                 & WJetsToLNu\_HT-800To1200\_TuneCP5\_13TeV-madgraphMLM-pythia8  & $5.501 \times 1.21$     \\
+                 & WJetsToLNu\_HT-1200To2500\_TuneCP5\_13TeV-madgraphMLM-pythia8 & $1.329 \times 1.21$     \\
+                 & WJetsToLNu\_HT-2500ToInf\_TuneCP5\_13TeV-madgraphMLM-pythia8  & $0.03216 \times 1.21$   \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}
+  \centering
+  \caption{List of Monte Carlo samples used for Charge MisId fake rate and their cross-sections}\label{tab:chargeMis_xsec}
+  \begin{tabular}{ c l r }
+    \hline
+    Sample Group               & DAS Name                                                 & cross-section (pb) \\
+    \hline
+    \multirow{3}{*}{VV}        & WW\_TuneCP5\_13TeV-pythia8                               & 118.7              \\
+                               & WZ\_TuneCP5\_13TeV-pythia8                               & 51.11              \\
+                               & ZZ\_TuneCP5\_13TeV-pythia8                               & 16.91              \\
+    \hline
+    \multirow{2}{*}{Drell-Yan} & DYJetsToLL\_M-10to50\_TuneCP5\_13TeV-madgraphMLM-pythia8 & 18610.0            \\
+                               & DYJetsToLL\_M-50\_TuneCP5\_13TeV-amcatnloFXFX-pythia8    & 6077.22            \\
+    \hline
+    \multirow{3}{*}{\shortstack{TTbar\\lepton-binned}}
+                               & TTTo2L2Nu\_TuneCP5\_13TeV-powheg-pythia8                 & 88.29              \\
+                               & TTToSemiLeptonic\_TuneCP5\_13TeV-powheg-pythia8          & 365.34             \\
+                               & TTToHadronic\_TuneCP5\_13TeV-powheg-pythia8              & 377.96             \\
+    \hline
+  \end{tabular}
+\end{table}
+
+
+% \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-output-dir: "build"
+%%% TeX-master: "../AN"
+%%% End:
