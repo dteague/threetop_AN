@@ -182,7 +182,7 @@ For this templated fit, we split our MC into two groups, EWK (as states before) 
   \subfigure(5) \includegraphics[width=0.35\textwidth]{template_fit/2017/mt_low_Muon_15.0.png} \hfill
   \subfigure(6) \includegraphics[width=0.35\textwidth]{template_fit/2017/mt_high_Muon_20.0.png} \\
   \subfigure(7) \includegraphics[width=0.35\textwidth]{template_fit/2017/mt_high_Muon_35.0.png}
-  \caption{Results of the Template fit for 2016. Top 4 plots are for Electrons for the $\pt$ ranges of $\pt < 20\gev$ (1), $20\gev<\pt<25\gev$ (2), $25\gev<\pt<45\gev$ (3), and $\pt>45\gev$ (4), while the bottom 3 plots are for Muons in the $\pt$ ranges of $\pt < 20\gev$ (5), $20\gev<\pt<35\gev$ (6), and $\pt>35\gev$ (7)}
+  \caption{Results of the Template fit for 2017. Top 4 plots are for Electrons for the $\pt$ ranges of $\pt < 20\gev$ (1), $20\gev<\pt<25\gev$ (2), $25\gev<\pt<45\gev$ (3), and $\pt>45\gev$ (4), while the bottom 3 plots are for Muons in the $\pt$ ranges of $\pt < 20\gev$ (5), $20\gev<\pt<35\gev$ (6), and $\pt>35\gev$ (7)}
 \end{figure}
 
 \begin{figure}
@@ -194,7 +194,7 @@ For this templated fit, we split our MC into two groups, EWK (as states before) 
   \subfigure(5) \includegraphics[width=0.35\textwidth]{template_fit/2018/mt_low_Muon_15.0.png} \hfill
   \subfigure(6) \includegraphics[width=0.35\textwidth]{template_fit/2018/mt_high_Muon_20.0.png} \\
   \subfigure(7) \includegraphics[width=0.35\textwidth]{template_fit/2018/mt_high_Muon_35.0.png}
-  \caption{Results of the Template fit for 2016. Top 4 plots are for Electrons for the $\pt$ ranges of $\pt < 20\gev$ (1), $20\gev<\pt<25\gev$ (2), $25\gev<\pt<45\gev$ (3), and $\pt>45\gev$ (4), while the bottom 3 plots are for Muons in the $\pt$ ranges of $\pt < 20\gev$ (5), $20\gev<\pt<35\gev$ (6), and $\pt>35\gev$ (7)}
+  \caption{Results of the Template fit for 2018. Top 4 plots are for Electrons for the $\pt$ ranges of $\pt < 20\gev$ (1), $20\gev<\pt<25\gev$ (2), $25\gev<\pt<45\gev$ (3), and $\pt>45\gev$ (4), while the bottom 3 plots are for Muons in the $\pt$ ranges of $\pt < 20\gev$ (5), $20\gev<\pt<35\gev$ (6), and $\pt>35\gev$ (7)}
 \end{figure}
 
 \subsubsection{Measured Fake Rate}\label{sec:nonprompt:measurement}
@@ -246,18 +246,43 @@ After applying the template scale factors derived in our sideband region, we cal
 
 \subsubsection{Closure Test}\label{sec:nonprompt:closure}
 
-The closure region cuts are listed below:
+To test the fake rates measured, we do so in a signal-like closure region. Our signal region is primarily composed of a high $\HT$ and 2 same-sign leptons, but we relax these cuts to boost statistics for testing the overall agreement. The closure region cuts are listed below:
 
 \begin{itemize}
   \item Dilepton Trigger
   \item 2 Same Sign Leptons (Fake or Tight)
-  \item $M_{\ell\ell} > 12\gev$ and $|M_{\ell\ell}-M_{Z}| > 15\gev$
+  \item $M_{\ell\ell} < 12\gev$ and $|M_{Z}-M_{\ell\ell}| < 15\gev$
   \item $N_{j} \ge 1$
   \item $\HT \ge 125\gev$
   \item $\MET > 50\gev$
 \end{itemize}
 
+For applying the fake rates, we note that our fake rate is actually a ratio of Tight leptons to Fake leptons (Tight inclusive) making it a ratio of Fake leptons that are also Tight. For our application, we are transfering events from a Fake region to a Tight region, so we need the ratio of Tight leptons to Fake leptons (Tight excluded), making our weight we apply $\frac{f}{1-f}$ where f is the fake rate.
 
+Because our signal region is a multi-lepton region, we need to also consider double counting in our application. For a 2 lepton case, we consider 3 regions: the Tight-Tight (TT), Tight-Fake (TF), and Fake-Fake (FF). For transfering events from the TF, we note that there are events with 1 nonprompt lepton and events with 2 nonprompt leptons where one of these nonprompt leptons is faking a Tight lepton. Because for the case of 2 nonprompt leptons, either could have faked being a tight lepton, we end up double counting events with 2 nonprompt leptons. To correct for this, we need to subtract these events from the FF region.
+
+This logic can be extended to the 3 lepton case and we see an extra negative sign is needed for every even number of Fake leptons in the event, or:
+
+\begin{equation}
+  \label{eq:1}
+  w = (-1)^{N_{\ell}}\prod_{i}^{N_{\ell}}\frac{f(\pt(i), \eta(i))}{1-f(\pt(i), \eta(i))}
+\end{equation}
+
+Applying these factors to our TF and FF closure regions, we get an estimation of the nonprompt background in our TT closure region. Since the nonprompt background comes from high cross-section samples that have a lepton originating from a jet faking a prompt lepton, we expect ttbar and W+Jets to dominate (Drell-Yan being removed from the Z veto). Comparing our nonprompt data-driven estimation to the MC, we see agreement is fair. Keeping in line with other analyses and the agreement in our closure region, we estimate our systematic error from the Nonprompt Fake rate being the error in the statistics of the fake rate measurement itself and a 30\% log-normal systematic coming from the agreement in our closure region.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.31\textwidth]{closure/2016/ht_TT_EE.png} \hfill
+  \includegraphics[width=0.31\textwidth]{closure/2016/ht_TT_EM.png} \hfill
+  \includegraphics[width=0.31\textwidth]{closure/2016/ht_TT_MM.png} \\
+  \includegraphics[width=0.31\textwidth]{closure/2017/ht_TT_EE.png} \hfill
+  \includegraphics[width=0.31\textwidth]{closure/2017/ht_TT_EM.png} \hfill
+  \includegraphics[width=0.31\textwidth]{closure/2017/ht_TT_MM.png} \\
+  \includegraphics[width=0.31\textwidth]{closure/2018/ht_TT_EE.png} \hfill
+  \includegraphics[width=0.31\textwidth]{closure/2018/ht_TT_EM.png} \hfill
+  \includegraphics[width=0.31\textwidth]{closure/2018/ht_TT_MM.png} \\
+  \caption{Closure plots for 2016 (top), 2017 (middle), and 2018 (bottom) considering all three channels, EE (left), EM (middle), and MM (right)}\label{fig:a}
+\end{figure}
 
 
 \subsection{Charge Mis-Identification}\label{sec:charge_misId}
